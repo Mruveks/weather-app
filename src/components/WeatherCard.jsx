@@ -3,6 +3,8 @@ import axios from 'axios'
 
 import sunclouds from '../assets/sunnyclouds.png'
 
+import {TiWeatherCloudy, TiWeatherDownpour, TiWeatherNight, TiWeatherPartlySunny, TiWeatherShower, TiWeatherSunny, TiWeatherStormy, TiWeatherSnow, TiWeatherWindy} from 'react-icons/ti'
+
 const WeatherCard = () => {
 
   const [data, setData] = useState([])
@@ -57,7 +59,7 @@ const WeatherCard = () => {
   var day = today.getDay();
 
   function handleWindDirection(direction) {
-    if ((23 > direction >= 0) || (260 > direction > 337)) {
+    if ((23 > direction >= 0) || (260 > direction >= 337)) {
       return 'North'
     } else if (68 > direction >= 24){
       return 'North-East'
@@ -77,43 +79,78 @@ const WeatherCard = () => {
   }
 
   return (
-    <div className="bg-blue-800 h-screen text-white">
-      <div className="grid grid-cols-4 bg-theme bg-cover">
+      <div className="grid bg-theme bg-cover w-screen text-white sm:px-40 px-10 ">
 
-        <div className="h-96 w-[60rem] justify-self-center rounded-3xl text-2xl">
-          
+        <div className="sm:text-2xl">
           {data.length ?
             (data.filter(item => (item.date === todayString && item.hours === now)).map(item => 
-              <div key={item.id} className="items-center text-center p-2 h-full flex flex-col">
+              <div key={item.id} className="flex sm:flex-row flex-col gap-2">
 
-                <div className="flex justify-around">{selectDay(day)}</div>
-                <div>{item.date}</div>
                 
-                <div className="mt-auto flex flex-col">
-                  <div className="flex justify-around mt-auto mb-0">
-                    <div>{item.hours}:00</div>
-                    <div>{item.value}°C</div>
+                <div className="text-center sm:text-left sm:w-[50%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
+
+                  <header className="text-4xl ">Warszawa</header>
+                  <div className="gap-2 flex justify-center sm:justify-start">
+                    <div className="">{selectDay(day)}</div>
+                    <div className="sm:text-xl sm:m-1">{item.date}, {item.hours}:00</div>
                   </div>
-                    <div>{item.wind } km/h - {handleWindDirection(item.winddirection)}</div>
+
+                  <div className="flex sm:flex-row flex-col justify-between items-center">
+                    <TiWeatherCloudy size={200} />
+                    
+                    <div className="flex flex-col text-8xl ">
+                      {item.value}°C
+                      <div className="text-xl pt-2">Wind: {item.wind} km/h - {handleWindDirection(item.winddirection)}</div>
+                    </div>
+
+                    <div className="flex flex-col text-xl text-center">
+                      <header>Air Quality</header>
+                      <div className="bg-green-300 bold">GOOD</div>
+                    </div>                   
+                  </div>
+
+                  <div className="mt-2 sm:mt-10 text-yellow-200 flex justify-between items-center">
+                    <header>Forecast:</header>
+                    <button>Hourly</button>
+                    <button>5-days</button>
+                    <button>March</button>
+                  </div>
                 </div>
-                
+
+                <div className="text-center sm:w-[20%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
+                  <header className="text-4xl">Night</header>
+                  <TiWeatherDownpour size={140} className="mx-auto " />
+                  <div>tempteratuire</div>
+                  <div>deszcz, ulewa</div>
+                </div>
+
+                <div className="text-center sm:w-[20%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
+                  <header className="text-4xl">Tomorrow</header>
+                  <TiWeatherSunny size={140} className="mx-auto" />
+                  <div >tempteratuire</div>
+                  <div>deszcz, ulewa</div>
+                </div>
+
+                <div className="text-center sm:w-[10%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
+                  <header className="text-4xl">Cities</header>
+                  <ul className="text-lg pt-4">
+                    <li className="py-1">Warszawa</li>
+                    <li className="py-1">Kraków</li>
+                    <li className="py-1">Gdańsk</li>
+                    <li className="py-1">Poznań</li>
+                    <li className="py-1">Łódź</li>
+                    <li className="py-1">Wrocław</li>
+                    <li className="py-1">Szczecin</li>
+                    <li className="py-1">Katowice</li>
+                  </ul>
+                </div>
               </div>
             ))
               : null
           }
         </div>
-        <div className="">
-          
-        </div>
-        <div className="">
-          
-        </div>
-        <div className="">
-
-        </div>
-
       </div>
-    </div>
+
   )
 }
 
