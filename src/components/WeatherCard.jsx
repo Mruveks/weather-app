@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-
-import sunclouds from '../assets/sunnyclouds.png'
-
 import {TiWeatherCloudy, TiWeatherDownpour, TiWeatherNight, TiWeatherPartlySunny, TiWeatherShower, TiWeatherSunny, TiWeatherStormy, TiWeatherSnow, TiWeatherWindy} from 'react-icons/ti'
 
 const WeatherCard = () => {
@@ -26,8 +23,6 @@ const WeatherCard = () => {
           wind: wind[index],
           winddirection: winddirection[index],
         }))
-
-        console.log(datasource)
         setData(datasource)
       })
       .catch(err => { console.log(err) })

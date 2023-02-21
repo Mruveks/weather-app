@@ -133,7 +133,7 @@ const Home = () => {
       )}
 
       {data.filter(item => (item.date === tomorrowString && item.hours === '12')).map(item =>
-          <div className="bg-gray-50 py-6 px-16 sm:w-[40%] text-center text-black border-gray-400 sm:border-r-2 border-b-2">
+          <div className="bg-gray-50 p-6  sm:w-[40%] text-center text-black border-gray-400 sm:border-r-2 border-b-2">
             
             <header className="text-4xl">Tomorrow</header>
             <div className="flex justify-center gap-2 items-center">
@@ -181,17 +181,10 @@ const Home = () => {
               <div className={`${style}`}>       
                 <header>Clouds</header>        
                 <p>{item.cloud}%</p>
-                </div>
-              </div> 
-            </div>
-            
-          
-                   
-          <div className={`${style}`}>           
-            <header>Rain</header>           
-            <p>{item.rain}%</p>
-          </div>                     
+              </div>             
+            </div>               
         </div>
+      </div>  
       )}
 
       {data.filter(item => (item.date === dayAfterTomorrow && item.hours === '12')).map(item =>
@@ -238,11 +231,11 @@ const Home = () => {
           <header className="text-4xl">{selectDay(day)}</header>
           <div className={`${style}`}>
             <header>Sunrise</header>
-            <p>{sunrise.slice(12)}</p>
+            <p>{sunrise.slice(11)}</p>
           </div>
           <div className={`${style}`}>
             <header>Sunset</header>
-            <p>{sunset.slice(12)}</p>
+            <p>{sunset.slice(11)}</p>
           </div>
           <div className={`${style}`}>       
             <header>UV Index</header>        
@@ -250,7 +243,7 @@ const Home = () => {
           </div> 
           <div className={`${style}`}>       
             <header>Radiation</header>        
-            <p>{radiation}</p>
+            <p>{radiation} MJ/m2</p>
           </div>            
         </div>
     
