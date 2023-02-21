@@ -8,7 +8,7 @@ import WeatherCard from './components/WeatherCard'
 function App() {
 
   return (
-    <div className="bg-gray-600 grid w-[170%] sm:w-screen">
+    <div className="text-white grid overflow-x-hidden">
 
       <Navbar />
       <WeatherCard />

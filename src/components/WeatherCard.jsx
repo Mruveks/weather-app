@@ -50,7 +50,7 @@ const WeatherCard = () => {
       return 'Sunday'
     }
   }
-  //  TODO: dynamic wybor miast, icony, prognoza na tydzien, prognoza dlugotermiunowa /  
+
   var today = new Date();
   var todayString;
   today.setDate(today.getDate());
@@ -133,7 +133,7 @@ const WeatherCard = () => {
 
                 <div className="text-center sm:w-[10%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
                   <header className="text-4xl">Cities</header>
-                  <ul className="text-lg pt-4">
+                  <ul className="text-lg pt-4 text-yellow-200">
                     <li className="py-1">Warszawa</li>
                     <li className="py-1">Kraków</li>
                     <li className="py-1">Gdańsk</li>
