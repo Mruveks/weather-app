@@ -8,6 +8,7 @@ const Test = () => {
   const [hum, setHum] = useState([])
   const [wind, setWind] = useState([])
 
+
   useEffect(() => {
     axios.get('https://api.open-meteo.com/v1/forecast?latitude=52.23&longitude=21.01&hourly=temperature_2m&hourly=relativehumidity_2m&hourly=windspeed_10m')
       .then(res => {
@@ -20,7 +21,6 @@ const Test = () => {
       })
       .catch(err => { console.log(err) })
   }, []);
-
 
   return (
     <div className="w-[40rem] grid grid-cols-4 text-center">
