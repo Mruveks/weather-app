@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {TiWeatherCloudy, TiWeatherDownpour, TiWeatherNight, TiWeatherPartlySunny, TiWeatherShower, TiWeatherSunny, TiWeatherStormy, TiWeatherSnow, TiWeatherWindy} from 'react-icons/ti'
-
+import WeatherCode from '../utils/WeatherCode'
 const WeatherCard = () => {
 
   const [data, setData] = useState([])
   
   useEffect(() => {
-    axios.get('https://api.open-meteo.com/v1/forecast?latitude=52.23&longitude=21.01&hourly=temperature_2m&hourly=relativehumidity_2m&hourly=windspeed_10m&hourly=winddirection_10m')
+    axios.get('https://api.open-meteo.com/v1/forecast?latitude=52.23&longitude=21.01&hourly=temperature_2m,relativehumidity_2m,windspeed_10m,winddirection_10m,weathercode')
       .then(res => {
         const data = res.data
         const hourly = data.hourly
@@ -15,6 +15,7 @@ const WeatherCard = () => {
         const time = hourly.time
         const wind = hourly.windspeed_10m
         const winddirection = hourly.winddirection_10m
+        const weathercode = hourly.weathercode
 
         const datasource = temp.map((value, index) => ({
           date: (time[index]).slice(0, 10),
@@ -22,6 +23,7 @@ const WeatherCard = () => {
           value,
           wind: wind[index],
           winddirection: winddirection[index],
+          weathercode: weathercode[index],
         }))
         setData(datasource)
       })
@@ -49,9 +51,11 @@ const WeatherCard = () => {
   var today = new Date();
   var todayString;
   today.setDate(today.getDate());
-  todayString = (today.getFullYear() + '-' + ('0' + (today.getMonth()+1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2));
+  todayString = (today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2));
+  const tomorrowString = (today.getFullYear() + '-' + ('0' + (today.getMonth()+1)).slice(-2) + '-' + ('0' + (today.getDate() + 1)).slice(-2));
   var now = ('0' + today.getHours()).slice(-2)
   var day = today.getDay();
+  console.log(tomorrowString)
 
   function handleWindDirection(direction) {
     if ((23 > direction >= 0) || (260 > direction >= 337)) {
@@ -115,15 +119,13 @@ const WeatherCard = () => {
                 <div className="text-center sm:w-[20%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
                   <header className="text-4xl">Night</header>
                   <TiWeatherDownpour size={140} className="mx-auto " />
-                  <div>tempteratuire</div>
-                  <div>deszcz, ulewa</div>
+                  <div>{(data.filter(item => (item.date === tomorrowString && item.hours === '01')).map(item => <div>{<WeatherCode code={item.weathercode} />}</div>))}</div>
                 </div>
 
                 <div className="text-center sm:w-[20%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
                   <header className="text-4xl">Tomorrow</header>
                   <TiWeatherSunny size={140} className="mx-auto" />
-                  <div >tempteratuire</div>
-                  <div>deszcz, ulewa</div>
+                  <div>{(data.filter(item => (item.date === tomorrowString && item.hours === '12')).map(item => <div>{<WeatherCode code={item.weathercode} />}</div>))}</div>
                 </div>
 
                 <div className="text-center sm:w-[10%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
