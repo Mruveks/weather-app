@@ -6,10 +6,17 @@ import WeatherIcon from '../utils/WeatherIcon';
 const Forecast = () => {
 
   const [data, setData] = useState([])
+  const [city, setCity] = useState('Warszawa')
+  const [lon, setLon] = useState(21.01)
+  const [lat, setLat] = useState(52.23)
 
+  function handleClickCity(lat, lon) {
+      setLat(lat)
+      setLon(lon)
+    }
 
   useEffect(() => {
-    axios.get('https://api.open-meteo.com/v1/forecast?latitude=52.23&longitude=21.01&hourly=temperature_2m,apparent_temperature,winddirection_10m,snowfall,relativehumidity_2m,weathercode,windspeed_10m,cloudcover,rain,surface_pressure')
+    axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,apparent_temperature,winddirection_10m,snowfall,relativehumidity_2m,weathercode,windspeed_10m,cloudcover,rain,surface_pressure`)
       .then(res => {
         const data = res.data
         const hourly = data.hourly
@@ -43,8 +50,9 @@ const Forecast = () => {
         setData(datasource)
       })
       .catch(err => { console.log(err) })
-  }, []);
+  }, [lat]);
 
+  
   var today = new Date();
   var todayString;
   today.setDate(today.getDate());
@@ -57,15 +65,15 @@ const Forecast = () => {
   return (
 
     <div className="sm:mx-40 sm:mt-5 text-black">
-      <header className="flex h-[20%] justify-between text-4xl text-orange-400">
-        <button>Warszawa</button>
-        <button>Kraków</button>
-        <button>Gdask</button>
-        <button>Poznań</button>
-        <button>Łódź</button>
-        <button>Wrocław</button>
-        <button>Szczecin</button>
-        <button>Katowice</button>
+      <header className="flex h-[20%] py-2 justify-between text-4xl">
+        <button onClick={() => { handleClickCity(52.23, 21.01); setCity('Warszawa') }} className={`${city === 'Warszawa' ? 'text-orange-400' : ''}`}>Warszawa</button>
+        <button onClick={() => { handleClickCity(50.06, 19.94); setCity('Krakow') }} className={`${city === 'Krakow' ? 'text-orange-400' : ''}`}>Kraków</button>
+        <button onClick={() => { handleClickCity(54.35, 18.65); setCity('Gdansk') }} className={`${city === 'Gdansk' ? 'text-orange-400' : ''}`}>Gdańsk</button>
+        <button onClick={() => { handleClickCity(52.41, 16.93); setCity('Poznan') }} className={`${city === 'Poznan' ? 'text-orange-400' : ''}`}>Poznań</button>
+        <button onClick={() => { handleClickCity(51.77, 19.47); setCity('Lodz') }} className={`${city === 'Lodz' ? 'text-orange-400' : ''}`}>Łódź</button>
+        <button onClick={() => { handleClickCity(51.10, 17.03); setCity('Wroclaw') }} className={`${city === 'Wroclaw' ? 'text-orange-400' : ''}`}>Wrocław</button>
+        <button onClick={() => { handleClickCity(53.43, 14.55); setCity('Szczecin') }} className={`${city === 'Szczecin' ? 'text-orange-400' : ''}`}>Szczecin</button>
+        <button onClick={() => { handleClickCity(50.26, 19.03); setCity('Katowice') }} className={`${city === 'Katowice' ? 'text-orange-400' : ''}`}>Katowice</button>
       </header>
 
       <div className="text-4xl py-2 bg-gray-100 font-bold">
