@@ -13,7 +13,7 @@ export default function WindDirection({direction}) {
     return 'South-West'
   } else if ((293 > direction) && (direction >= 249)){
     return 'West'
-  } else if ((360 > direction) && (direction >= 294)){
+  } else if ((360 >= direction) && (direction >= 294)){
     return 'North-West'
   }
 }
