@@ -8,6 +8,7 @@ import WeatherCard from './components/WeatherCard'
 import Media from './pages/Media'
 import News from './pages/News'
 import Forecast from './pages/Forecast'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
 
       <Navbar />
       <WeatherCard />
-
+      
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,6 +26,8 @@ function App() {
           <Route path="/media" element={<Media />} />
         </Routes>
       </div>
+
+      <Footer />
     </div>
   )
 }

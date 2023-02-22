@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {TiWeatherCloudy, TiWeatherDownpour, TiWeatherNight, TiWeatherPartlySunny, TiWeatherShower, TiWeatherSunny, TiWeatherStormy, TiWeatherSnow, TiWeatherWindy} from 'react-icons/ti'
+
 import WeatherCode from '../utils/WeatherCode'
 import SelectDay from '../utils/SelectDay'
+import WeatherIcon from '../utils/WeatherIcon'
 
 const WeatherCard = () => {
 
@@ -78,7 +80,7 @@ const WeatherCard = () => {
                   </div>
 
                   <div className="flex sm:flex-row flex-col justify-between items-center">
-                    <TiWeatherCloudy size={200} />
+                    <WeatherIcon icon={item.weathercode} size={200} time={item.hours}/>
                     
                     <div className="flex flex-col text-8xl ">
                       {item.value}°C
@@ -101,13 +103,21 @@ const WeatherCard = () => {
 
                 <div className="text-center sm:w-[25%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
                   <header className="text-4xl">Night</header>
-                  <TiWeatherDownpour size={140} className="mx-auto " />
+                  <div className="flex justify-center">
+                    {(data.filter(item => (item.date === tomorrowString && item.hours === '01')).map(item =>
+                      <div>{<WeatherIcon icon={item.weathercode} size={140} time={item.hours} />}</div>))}
+                  </div>
+
                   <div>{(data.filter(item => (item.date === tomorrowString && item.hours === '01')).map(item => <div>{<WeatherCode code={item.weathercode} />}</div>))}</div>
                 </div>
 
                 <div className="text-center sm:w-[25%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
                   <header className="text-4xl">Tomorrow</header>
-                  <TiWeatherSunny size={140} className="mx-auto" />
+                  <div className="flex justify-center">
+                    {(data.filter(item => (item.date === tomorrowString && item.hours === '12')).map(item =>
+                      <div>{<WeatherIcon icon={item.weathercode} size={140} time={item.hours} />}</div>))}
+                  </div>
+
                   <div>{(data.filter(item => (item.date === tomorrowString && item.hours === '12')).map(item => <div>{<WeatherCode code={item.weathercode} />}</div>))}</div>
                 </div>
 

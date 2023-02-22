@@ -56,8 +56,8 @@ const Forecast = () => {
 
   return (
 
-    <div className="sm:mx-40 sm:mt-5 h-96 text-black">
-      <header className="flex h-[20%] justify-between text-4xl">
+    <div className="sm:mx-40 sm:mt-5 text-black">
+      <header className="flex h-[20%] justify-between text-4xl text-orange-400">
         <button>Warszawa</button>
         <button>Kraków</button>
         <button>Gdask</button>
