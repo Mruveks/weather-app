@@ -2,12 +2,14 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {TiWeatherCloudy, TiWeatherDownpour, TiWeatherNight, TiWeatherPartlySunny, TiWeatherShower, TiWeatherSunny, TiWeatherStormy, TiWeatherSnow, TiWeatherWindy} from 'react-icons/ti'
 import WeatherCode from '../utils/WeatherCode'
+import SelectDay from '../utils/SelectDay'
+
 const WeatherCard = () => {
 
   const [data, setData] = useState([])
   
   useEffect(() => {
-    axios.get('https://api.open-meteo.com/v1/forecast?latitude=52.23&longitude=21.01&hourly=temperature_2m,relativehumidity_2m,windspeed_10m,winddirection_10m,weathercode')
+    axios.get(`https://api.open-meteo.com/v1/forecast?latitude=52.23&longitude=21.01&hourly=temperature_2m,relativehumidity_2m,windspeed_10m,winddirection_10m,weathercode`)
       .then(res => {
         const data = res.data
         const hourly = data.hourly
@@ -29,24 +31,6 @@ const WeatherCard = () => {
       })
       .catch(err => { console.log(err) })
   }, []);
-
-  function selectDay(number) {
-    if (number === 1) {
-      return 'Monday'
-    } else if (number === 2){
-      return 'Tueseday'
-    } else if (number === 3){
-      return 'Wednesday'
-    } else if (number === 4){
-      return 'Thursday'
-    } else if (number === 5){
-      return 'Friday'
-    } else if (number === 6){
-      return 'Saturday'
-    } else if (number === 7){
-      return 'Sunday'
-    }
-  }
 
   var today = new Date();
   var todayString;
@@ -79,7 +63,6 @@ const WeatherCard = () => {
 
   return (
       <div className="grid bg-theme bg-cover w-screen text-white sm:px-40 px-10 ">
-
         <div className="sm:text-2xl">
           {data.length ?
             (data.filter(item => (item.date === todayString && item.hours === now)).map(item => 
@@ -90,7 +73,7 @@ const WeatherCard = () => {
 
                   <header className="text-4xl ">Warszawa</header>
                   <div className="gap-2 flex justify-center sm:justify-start">
-                    <div className="">{selectDay(day)}</div>
+                    <div className="">{<SelectDay number={day} />}</div>
                     <div className="sm:text-xl sm:m-1">{item.date}, {item.hours}:00</div>
                   </div>
 
@@ -116,31 +99,18 @@ const WeatherCard = () => {
                   </div>
                 </div>
 
-                <div className="text-center sm:w-[20%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
+                <div className="text-center sm:w-[25%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
                   <header className="text-4xl">Night</header>
                   <TiWeatherDownpour size={140} className="mx-auto " />
                   <div>{(data.filter(item => (item.date === tomorrowString && item.hours === '01')).map(item => <div>{<WeatherCode code={item.weathercode} />}</div>))}</div>
                 </div>
 
-                <div className="text-center sm:w-[20%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
+                <div className="text-center sm:w-[25%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
                   <header className="text-4xl">Tomorrow</header>
                   <TiWeatherSunny size={140} className="mx-auto" />
                   <div>{(data.filter(item => (item.date === tomorrowString && item.hours === '12')).map(item => <div>{<WeatherCode code={item.weathercode} />}</div>))}</div>
                 </div>
 
-                <div className="text-center sm:w-[10%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
-                  <header className="text-4xl">Cities</header>
-                  <ul className="text-lg pt-4 text-yellow-200">
-                    <li className="py-1">Warszawa</li>
-                    <li className="py-1">Kraków</li>
-                    <li className="py-1">Gdańsk</li>
-                    <li className="py-1">Poznań</li>
-                    <li className="py-1">Łódź</li>
-                    <li className="py-1">Wrocław</li>
-                    <li className="py-1">Szczecin</li>
-                    <li className="py-1">Katowice</li>
-                  </ul>
-                </div>
               </div>
             ))
               : null

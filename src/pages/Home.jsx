@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import {TiWeatherCloudy, TiWeatherDownpour, TiWeatherNight, TiWeatherPartlySunny, TiWeatherShower, TiWeatherSunny, TiWeatherStormy, TiWeatherSnow, TiWeatherWindy} from 'react-icons/ti'
+import SelectDay from '../utils/SelectDay';
 
 const Home = () => {
 
@@ -60,24 +61,6 @@ const Home = () => {
       .catch(err => { console.log(err) })
   }, []);
 
-  function selectDay(number) {
-    if (number === 1) {
-      return 'Monday'
-    } else if (number === 2){
-      return 'Tueseday'
-    } else if (number === 3){
-      return 'Wednesday'
-    } else if (number === 4){
-      return 'Thursday'
-    } else if (number === 5){
-      return 'Friday'
-    } else if (number === 6){
-      return 'Saturday'
-    } else if (number === 7){
-      return 'Sunday'
-    }
-  }
-
   var today = new Date();
   var todayString;
   today.setDate(today.getDate());
@@ -91,7 +74,7 @@ const Home = () => {
   const style = "flex p-2 justify-between border-gray-400 border-b-2"
 
   return (
-    <div className="flex sm:flex-row flex-col sm:mx-40">
+    <div className="flex sm:flex-row flex-col sm:mx-40 sm:mt-5">
       
       {data.filter(item => (item.date === tomorrowString && item.hours === '01')).map(item =>
         <div className="bg-blue-500 p-6 sm:w-[20%] text-center">
@@ -196,7 +179,7 @@ const Home = () => {
           </div>
           <div className={`${style}`}>
             <header>Temperature</header>
-            <p>{item.value} C</p>
+            <p>{item.value}°C</p>
           </div>
           <div className={`${style}`}>
             <header>Wind</header>
@@ -228,7 +211,7 @@ const Home = () => {
    
         <div className="bg-gray-200 m-10 p-6 sm:w-[20%] text-left text-black">
           <header className="text-md">Today it's...</header>          
-          <header className="text-4xl">{selectDay(day)}</header>
+        <header className="text-4xl">{<SelectDay number={day} />}</header>
           <div className={`${style}`}>
             <header>Sunrise</header>
             <p>{sunrise.slice(11)}</p>

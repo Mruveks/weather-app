@@ -1,8 +1,5 @@
-import React from 'react'
-
-export const WeatherCode  = ({code}) => {
-  function handleWeatherCode(code) {
-    if (code === 0) {
+export default function handleWeatherCode({code}) {
+  if (code === 0) {
       return 'Clear sky'
     } else if (code === 1 || code === 2 || code === 3 ) {
       return 'Partly cloudy'
@@ -30,5 +27,3 @@ export const WeatherCode  = ({code}) => {
       return 'Thunderstorm with slight and heavy hail'
     }
   }
-  return <div>{handleWeatherCode(code)}</div>
-}
