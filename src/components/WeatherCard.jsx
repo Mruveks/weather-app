@@ -5,6 +5,7 @@ import {TiWeatherCloudy, TiWeatherDownpour, TiWeatherNight, TiWeatherPartlySunny
 import WeatherCode from '../utils/WeatherCode'
 import SelectDay from '../utils/SelectDay'
 import WeatherIcon from '../utils/WeatherIcon'
+import WindDirection from '../utils/WindDirection'
 
 const WeatherCard = () => {
 
@@ -43,26 +44,6 @@ const WeatherCard = () => {
   var day = today.getDay();
   console.log(tomorrowString)
 
-  function handleWindDirection(direction) {
-    if ((23 > direction >= 0) || (260 > direction >= 337)) {
-      return 'North'
-    } else if (68 > direction >= 24){
-      return 'North-East'
-    } else if (113 > direction >= 69){
-      return 'East'
-    } else if (158 > direction >= 114){
-      return 'South-East'
-    } else if (203 > direction >= 159){
-      return 'South'
-    } else if (248 > direction >= 204){
-      return 'South-West'
-    } else if (293 > direction >= 249){
-      return 'West'
-    } else if (336 > direction >= 294){
-      return 'North-West'
-    }
-  }
-
   return (
       <div className="grid bg-theme bg-cover w-screen text-white sm:px-40 px-10 ">
         <div className="sm:text-2xl">
@@ -80,11 +61,12 @@ const WeatherCard = () => {
                   </div>
 
                   <div className="flex sm:flex-row flex-col justify-between items-center">
+                    
                     <WeatherIcon icon={item.weathercode} size={200} time={item.hours}/>
                     
                     <div className="flex flex-col text-8xl ">
                       {item.value}°C
-                      <div className="text-xl pt-2">Wind: {item.wind} km/h - {handleWindDirection(item.winddirection)}</div>
+                      <div className="text-xl pt-2">Wind: {item.wind} km/h - {<WindDirection direction={item.winddirection} />}</div>
                     </div>
 
                     <div className="flex flex-col text-xl text-center">

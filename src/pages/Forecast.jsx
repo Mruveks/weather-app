@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SelectDay from '../utils/SelectDay';
-import WeatherCode from '../utils/WeatherCode'
+import WeatherCode from '../utils/WeatherCode';
 import WeatherIcon from '../utils/WeatherIcon';
+import WindDirection from '../utils/WindDirection';
+
 const Forecast = () => {
 
   const [data, setData] = useState([])
@@ -76,12 +78,12 @@ const Forecast = () => {
         <button onClick={() => { handleClickCity(50.26, 19.03); setCity('Katowice') }} className={`${city === 'Katowice' ? 'text-orange-400' : ''}`}>Katowice</button>
       </header>
 
-      <div className="text-4xl py-2 bg-gray-100 font-bold">
+      <div className="text-4xl py-2 bg-gray-50 font-bold">
         {<SelectDay number={day}/>}, {todayString}
       </div>
 
       {data.filter(item => item.date === todayString).map(item =>
-        <div key={item.id} className="flex justify-start gap-10 sm:px-10 sm:py-5 items-center text-center text-black border-b-2 border-gray-400">
+        <div key={item.id} className="flex justify-start gap-10 sm:px-10 sm:py-5 items-center text-center bg-gray-50 text-black border-b-2 border-gray-200">
 
           <header className="text-4xl">{item.hours}:00</header>
           <WeatherIcon icon={item.weathercode} size={100} time={item.hours}/>
@@ -102,7 +104,7 @@ const Forecast = () => {
             </div>
             <div className={`${style}`}>
               <div className="text-gray-500">Wind Direction</div>
-              <div>{item.winddirection}</div>
+              <div><WindDirection direction={item.winddirection} /></div>
             </div>
           </div>
 

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import {TiWeatherCloudy, TiWeatherDownpour, TiWeatherNight, TiWeatherPartlySunny, TiWeatherShower, TiWeatherSunny, TiWeatherStormy, TiWeatherSnow, TiWeatherWindy} from 'react-icons/ti'
 import SelectDay from '../utils/SelectDay';
-
+import WeatherIcon from '../utils/WeatherIcon';
 const Home = () => {
 
   const [data, setData] = useState([])
@@ -13,7 +12,7 @@ const Home = () => {
   const [radiation, setRadiation] = useState([])
   
   useEffect(() => {
-    axios.get('https://api.open-meteo.com/v1/forecast?latitude=52.23&longitude=21.01&hourly=temperature_2m,apparent_temperature,winddirection_10m,snowfall,relativehumidity_2m,windspeed_10m,cloudcover,rain,surface_pressure&daily=sunrise,sunset,shortwave_radiation_sum,uv_index_max&timezone=Europe%2FLondon')
+    axios.get('https://api.open-meteo.com/v1/forecast?latitude=52.23&longitude=21.01&hourly=temperature_2m,weathercode,apparent_temperature,winddirection_10m,snowfall,relativehumidity_2m,windspeed_10m,cloudcover,rain,surface_pressure&daily=sunrise,sunset,shortwave_radiation_sum,uv_index_max&timezone=Europe%2FLondon')
       .then(res => {
         const data = res.data
         const hourly = data.hourly
@@ -29,6 +28,7 @@ const Home = () => {
         const snow = hourly.snowfall
         const apparent_temperature = hourly.apparent_temperature
         const pressure = hourly.surface_pressure
+        const weathercode = hourly.weathercode
         
         const radiation = daily.shortwave_radiation_sum[0]
         const sunrise = daily.sunrise[0]
@@ -53,6 +53,7 @@ const Home = () => {
           snow: snow[index],
           apparent_temperature: apparent_temperature[index],
           pressure: pressure[index],
+          weathercode: weathercode[index]
         }))
 
         console.log(datasource)
@@ -82,7 +83,7 @@ const Home = () => {
           <header className="text-4xl">Night</header>
           <div className="flex justify-center gap-2 items-center">
             <p className="text-4xl">{item.value}°C</p>
-            <TiWeatherNight size={100} className="" />
+            <WeatherIcon icon={item.weathercode} size={100} time={item.hours} />
           </div>
           <div className={`${style}`}>
             <header>Apparent temperature</header>
@@ -110,18 +111,18 @@ const Home = () => {
           </div>
           <div className={`${style}`}>           
             <header>Pressure</header>           
-            <p>{item.pressure} Hpa</p>
+            <p>{item.pressure} hPa</p>
           </div>   
         </div>
       )}
 
       {data.filter(item => (item.date === tomorrowString && item.hours === '12')).map(item =>
-          <div className="bg-gray-50 p-6  sm:w-[40%] text-center text-black border-gray-400 sm:border-r-2 border-b-2">
+          <div className="bg-gray-50 p-6  sm:w-[40%] text-center text-black border-gray-200 sm:border-r-2">
             
             <header className="text-4xl">Tomorrow</header>
             <div className="flex justify-center gap-2 items-center">
               <p className="text-4xl">{item.value}°C</p>
-              <TiWeatherNight size={100} className="" />
+              <WeatherIcon icon={item.weathercode} size={100} time={item.hours} />
             </div>
             
             <div className="grid grid-cols-2 gap-8">
@@ -156,15 +157,7 @@ const Home = () => {
               <div className={`${style}`}>
                 <header>Pressure</header>
                 <p>{item.pressure} hPa</p>
-              </div>
-              <div className={`${style}`}>       
-                <header>Humidity</header>        
-                <p>{item.humidity}%</p>
-              </div> 
-              <div className={`${style}`}>       
-                <header>Clouds</header>        
-                <p>{item.cloud}%</p>
-              </div>             
+              </div>            
             </div>               
         </div>
       </div>  
@@ -175,11 +168,11 @@ const Home = () => {
           <header className="text-4xl">{<SelectDay number={day2} />}</header>
           <div className="flex justify-center gap-2 items-center">
             <p className="text-4xl">{item.value}°C</p>
-            <TiWeatherCloudy size={100} className="" />
+            <WeatherIcon icon={item.weathercode} size={100} time={item.hours} />
           </div>
           <div className={`${style}`}>
-            <header>Temperature</header>
-            <p>{item.value}°C</p>
+            <header>Apparent temperature</header>
+            <p>{item.apparent_temperature}°C</p>
           </div>
           <div className={`${style}`}>
             <header>Wind</header>
@@ -203,13 +196,12 @@ const Home = () => {
           </div>
             <div className={`${style}`}>           
             <header>Pressure</header>           
-            <p>{item.pressure} Hpa</p>
+            <p>{item.pressure} hPa</p>
           </div>     
         </div>
       )}    
-      
    
-        <div className="bg-gray-200 m-10 p-6 sm:w-[20%] text-left text-black">
+      <div className="bg-gray-200 m-10 p-6 sm:w-[20%] text-left text-black">
           <header className="text-md">Today it's...</header>          
         <header className="text-4xl">{<SelectDay number={day} />}</header>
           <div className={`${style}`}>
@@ -229,8 +221,7 @@ const Home = () => {
             <p>{radiation} MJ/m2</p>
           </div>            
         </div>
-    
-           
+        
     </div>
   )
 }
