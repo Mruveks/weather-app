@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import SelectDay from '../utils/SelectDay';
 import WeatherCode from '../utils/WeatherCode'
-import {TiWeatherCloudy, TiWeatherDownpour, TiWeatherNight, TiWeatherPartlySunny, TiWeatherShower, TiWeatherSunny, TiWeatherStormy, TiWeatherSnow, TiWeatherWindy} from 'react-icons/ti'
-
+import WeatherIcon from '../utils/WeatherIcon';
 const Forecast = () => {
 
   const [data, setData] = useState([])
@@ -58,7 +57,7 @@ const Forecast = () => {
   return (
 
     <div className="sm:mx-40 sm:mt-5 h-96 text-black">
-      <header className="flex h-[20%] justify-between text-4xl bg-red-400">
+      <header className="flex h-[20%] justify-between text-4xl">
         <button>Warszawa</button>
         <button>Kraków</button>
         <button>Gdask</button>
@@ -69,15 +68,15 @@ const Forecast = () => {
         <button>Katowice</button>
       </header>
 
-      <div className="text-2xl">
+      <div className="text-4xl py-2 bg-gray-100 font-bold">
         {<SelectDay number={day}/>}, {todayString}
       </div>
 
       {data.filter(item => item.date === todayString).map(item =>
-        <div key={item.id} className="flex justify-start gap-10 sm:px-10 sm:py-5 items-center bg-gray-100 text-center text-black border-b-2 border-gray-400">
+        <div key={item.id} className="flex justify-start gap-10 sm:px-10 sm:py-5 items-center text-center text-black border-b-2 border-gray-400">
 
           <header className="text-4xl">{item.hours}:00</header>
-          <TiWeatherDownpour size={100} />
+          <WeatherIcon icon={item.weathercode} size={100} time={item.hours}/>
           
           <div className="text-left w-[10%] text-2xl">
             <div className="text-4xl">{item.value}°C</div>

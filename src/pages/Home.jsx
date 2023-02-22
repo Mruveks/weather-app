@@ -172,7 +172,7 @@ const Home = () => {
 
       {data.filter(item => (item.date === dayAfterTomorrow && item.hours === '12')).map(item =>
         <div className="bg-gray-50 p-6 sm:w-[20%] text-center text-black">
-          <header className="text-4xl">{selectDay(day2)}</header>
+          <header className="text-4xl">{<SelectDay number={day2} />}</header>
           <div className="flex justify-center gap-2 items-center">
             <p className="text-4xl">{item.value}°C</p>
             <TiWeatherCloudy size={100} className="" />
