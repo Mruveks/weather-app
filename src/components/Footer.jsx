@@ -16,7 +16,7 @@ const Footer = () => {
       </div>
       <div className="flex justify-between px-10 py-5 sm:px-40">
         <div>2023 Kuba Mrowiec</div>
-        <div>Wszelkie prawa zastrzeżone. Zabronione jest wykorzystywanie informacji z portalu w celach komercyjnych bez zgody redakcji</div>
+        <div>Wszelkie prawa zastrzeżone</div>
       </div>
     </footer>
   )
