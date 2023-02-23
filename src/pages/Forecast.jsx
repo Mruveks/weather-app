@@ -59,7 +59,6 @@ const Forecast = () => {
   var todayString;
   today.setDate(today.getDate());
   todayString = (today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2));
-  const tomorrowString = (today.getFullYear() + '-' + ('0' + (today.getMonth()+1)).slice(-2) + '-' + ('0' + (today.getDate() + 1)).slice(-2));
   var day = today.getDay();
   
   const style = "flex gap-10 p-2 justify-between border-gray-400 border-b-2"

@@ -78,6 +78,7 @@ const WeatherCard = () => {
                   <div className="mt-2 sm:mt-10 text-yellow-200 flex justify-between items-center">
                     <header>Forecast:</header>
                     <button>Hourly</button>
+                    <button>Hourly</button>
                     <button>5-days</button>
                     <button>March</button>
                   </div>
