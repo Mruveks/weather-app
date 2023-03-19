@@ -60,13 +60,13 @@ const Forecast = () => {
   today.setDate(today.getDate());
   todayString = (today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2));
   var day = today.getDay();
-  
+
   const style = "flex gap-10 p-2 justify-between border-gray-400 border-b-2"
 
   return (
 
-    <div className="sm:mx-40 sm:mt-5 text-black">
-      <header className="flex h-[20%] py-2 justify-between text-4xl">
+    <div className="sm:mt-5 text-black sm:px-40 px-10">
+      <header className="grid grid-cols-2 sm:grid-cols-8 h-[20%] py-2 text-4xl">
         <button onClick={() => { handleClickCity(52.23, 21.01); setCity('Warszawa') }} className={`${city === 'Warszawa' ? 'text-orange-400' : ''}`}>Warszawa</button>
         <button onClick={() => { handleClickCity(50.06, 19.94); setCity('Krakow') }} className={`${city === 'Krakow' ? 'text-orange-400' : ''}`}>Kraków</button>
         <button onClick={() => { handleClickCity(54.35, 18.65); setCity('Gdansk') }} className={`${city === 'Gdansk' ? 'text-orange-400' : ''}`}>Gdańsk</button>
@@ -77,22 +77,23 @@ const Forecast = () => {
         <button onClick={() => { handleClickCity(50.26, 19.03); setCity('Katowice') }} className={`${city === 'Katowice' ? 'text-orange-400' : ''}`}>Katowice</button>
       </header>
 
-      <div className="text-4xl py-2 bg-gray-50 font-bold">
-        {<SelectDay number={day}/>}, {todayString}
+      <div className="text-center grid grid-rows-2 sm:text-left text-4xl py-2 bg-gray-50 font-bold italic border-y-2 border-gray-200">
+        <div>{todayString}</div>
+        <SelectDay number={day} />
       </div>
 
       {data.filter(item => item.date === todayString).map(item =>
-        <div key={item.id} className="flex justify-start gap-10 sm:px-10 sm:py-5 items-center text-center bg-gray-50 text-black border-b-2 border-gray-200">
+        <div key={item.hours} className="flex gap-4 sm:gap-8 items-center justify-evenly bg-gray-50 text-black border-b-2 border-gray-200">
 
           <header className="text-4xl">{item.hours}:00</header>
           <WeatherIcon icon={item.weathercode} size={100} time={item.hours}/>
           
-          <div className="text-left w-[10%] text-2xl">
+          <div className="sm:w-[10%] w-[30%] text-center text-2xl">
             <div className="text-4xl">{item.value}°C</div>
             <div>{<WeatherCode code={item.weathercode} />}</div>
           </div>
            
-          <div className="grid sm:w-[20%] text-xl">
+          <div className="sm:grid hidden sm:w-[20%] text-xl">
             <div className={`${style}`}>
               <div className="text-gray-500">Apparent Temp</div>
               <div>{item.apparent_temperature}°C</div>
@@ -107,7 +108,7 @@ const Forecast = () => {
             </div>
           </div>
 
-          <div className="grid sm:w-[20%] text-xl">
+          <div className="sm:grid hidden sm:w-[20%] text-xl">
             <div className={`${style}`}>
               <div className="text-gray-500">Snow</div>
               <div>{item.snow} %</div>
@@ -122,7 +123,7 @@ const Forecast = () => {
             </div>
           </div>
 
-          <div className="grid sm:w-[20%] text-xl">
+          <div className="sm:grid hidden sm:w-[20%] text-xl">
             <div className={`${style}`}>
               <div className="text-gray-500">Clouds</div>
               <div>{item.cloud} %</div>

@@ -11,7 +11,7 @@ export default function SelectDay({number}) {
     return 'Friday'
   } else if (number === 6){
     return 'Saturday'
-  } else if (number === 7){
+  } else if (number === 0){
     return 'Sunday'
   }
 }
