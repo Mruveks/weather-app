@@ -4,17 +4,17 @@ import {AiOutlineTwitter, AiOutlineInstagram, AiOutlineFacebook, AiOutlineYoutub
 
 const Footer = () => {
   return (
-    <footer className="mt-10 bg-blue-500">
-      <div className="flex justify-between px-10 py-5 sm:mx-40 items-center text-4xl border-b-2 border-gray-400">
+    <footer className="lg:mt-10 bg-blue-500 w-screen">
+      <div className="flex justify-between px-10 py-5 items-center text-4xl border-b-2 border-gray-400">
         <NavLink to="/">Kuba Mrowiec</NavLink>
-        <div className="sm:flex hidden gap-8 text-2xl">
+        <div className="flex sm:hidden gap-8 text-2xl">
           <AiOutlineInstagram />
           <AiOutlineFacebook />
           <AiOutlineTwitter />
           <AiOutlineYoutube />
         </div>
       </div>
-      <div className="flex justify-between px-10 py-5 sm:px-40">
+      <div className="flex justify-between px-10 py-5">
         <div>2023 Kuba Mrowiec</div>
         <div>Wszelkie prawa zastrzeżone</div>
       </div>

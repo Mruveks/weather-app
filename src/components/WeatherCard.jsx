@@ -45,63 +45,66 @@ const WeatherCard = () => {
   console.log(tomorrowString)
 
   return (
-      <div className="grid bg-theme bg-cover w-screen text-white sm:px-40 px-10 ">
+      <div className="grid bg-theme bg-cover w-screen text-white px-40 sm:px-10">
         <div className="sm:text-2xl">
           {data.length ?
             (data.filter(item => (item.date === todayString && item.hours === now)).map(item => 
-              <div key={item.id} className="flex sm:flex-row flex-col gap-2">
+              <div key={item.id} className="flex flex-col lg:flex-row gap-2 items-center">
 
                 
-                <div className="text-center sm:text-left sm:w-[50%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
+                <div className="sm:text-center text-left lg:w-[50%] my-10 lg:my-2 p-4 border-gray-400 lg:border-r-2">
 
-                  <header className="text-4xl ">Warszawa</header>
-                  <div className="gap-2 flex justify-center sm:justify-start">
+                  <header className="text-6xl">Warszawa</header>
+                  <div className="gap-2 text-2xl flex">
                     <div className="">{<SelectDay number={day} />}</div>
                     <div className="sm:text-xl sm:m-1">{item.date}, {item.hours}:00</div>
                   </div>
 
-                  <div className="flex sm:flex-row flex-col justify-between items-center">
+                  <div className="flex lg:flex-row flex-col justify-between items-center text-center">
                     
                     <WeatherIcon icon={item.weathercode} size={200} time={item.hours}/>
                     
-                    <div className="flex flex-col text-8xl ">
+                    <div className="flex flex-col text-4xl ">
                       {item.value}°C
-                      <div className="text-xl pt-2">Wind: {item.wind} km/h - {<WindDirection direction={item.winddirection} />}</div>
+                      <div className="text-2xl">Wind: {item.wind} km/h - {<WindDirection direction={item.winddirection} />}</div>
                     </div>
 
-                    <div className="flex flex-col text-xl text-center">
+                    <div className="flex flex-col mt-2 text-2xl text-center">
                       <header>Air Quality</header>
-                      <div className="bg-green-300 bold">GOOD</div>
+                      <div className="bg-green-400 bold ">GOOD</div>
                     </div>                   
                   </div>
-
-                  <div className="mt-2 sm:mt-10 text-yellow-200 flex justify-between items-center">
-                    <header>Forecast:</header>
-                    <button>Hourly</button>
-                    <button>Hourly</button>
-                    <button>5-days</button>
-                    <button>March</button>
-                  </div>
                 </div>
 
-                <div className="text-center sm:w-[25%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
-                  <header className="text-4xl">Night</header>
+                <div className="text-center lg:w-[25%] my-10 lg:my-2 p-4 border-gray-400 lg:border-r-2">
+                  <header className="text-6xl">Night</header>
                   <div className="flex justify-center">
-                    {(data.filter(item => (item.date === tomorrowString && item.hours === '01')).map(item =>
-                      <div>{<WeatherIcon icon={item.weathercode} size={140} time={item.hours} />}</div>))}
+                    {data.filter(item => (item.date === tomorrowString && item.hours === '01')).map(item =>
+                      <div className="text-4xl">
+                        <WeatherIcon icon={item.weathercode} size={140} time={item.hours} />
+                      </div>)}
                   </div>
+                
+                  {data.filter(item => (item.date === tomorrowString && item.hours === '01')).map(item =>
+                    <div className="text-2xl">
+                      <WeatherCode code={item.weathercode} />
+                    </div>)}
 
-                  <div>{(data.filter(item => (item.date === tomorrowString && item.hours === '01')).map(item => <div>{<WeatherCode code={item.weathercode} />}</div>))}</div>
                 </div>
 
-                <div className="text-center sm:w-[25%] sm:my-10 my-2 p-4 sm:border-gray-400 sm:border-r-2">
-                  <header className="text-4xl">Tomorrow</header>
+                <div className="text-center lg:w-[25%] my-10 lg:my-2 p-4 border-gray-400 lg:border-r-2">
+                  <header className="text-6xl">Tomorrow</header>
                   <div className="flex justify-center">
-                    {(data.filter(item => (item.date === tomorrowString && item.hours === '12')).map(item =>
-                      <div>{<WeatherIcon icon={item.weathercode} size={140} time={item.hours} />}</div>))}
+                    {data.filter(item => (item.date === tomorrowString && item.hours === '12')).map(item =>
+                      <div className="text-4xl">
+                        <WeatherIcon icon={item.weathercode} size={140} time={item.hours} />
+                      </div>)}
                   </div>
 
-                  <div>{(data.filter(item => (item.date === tomorrowString && item.hours === '12')).map(item => <div>{<WeatherCode code={item.weathercode} />}</div>))}</div>
+                  {data.filter(item => (item.date === tomorrowString && item.hours === '12')).map(item =>
+                    <div className="text-2xl">
+                      <WeatherCode code={item.weathercode} />
+                    </div>)}
                 </div>
 
               </div>

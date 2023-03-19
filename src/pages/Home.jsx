@@ -75,10 +75,10 @@ const Home = () => {
   const style = "flex p-2 justify-between border-gray-400 border-b-2"
 
   return (
-    <div className="flex sm:flex-row flex-col sm:mx-40 sm:mt-5">
+    <div className="flex lg:flex-row flex-col lg:mx-40 lg:mt-5 text-lg ">
       
       {data.filter(item => (item.date === tomorrowString && item.hours === '01')).map(item =>
-        <div className="bg-blue-500 p-6 sm:w-[20%] text-center">
+        <div className="bg-blue-500 p-6 lg:w-[20%] md:px-40 text-center w-screen">
           
           <header className="text-4xl">Night</header>
           <div className="flex justify-center gap-2 items-center">
@@ -117,7 +117,7 @@ const Home = () => {
       )}
 
       {data.filter(item => (item.date === tomorrowString && item.hours === '12')).map(item =>
-          <div className="bg-gray-50 p-6  sm:w-[40%] text-center text-black border-gray-200 sm:border-r-2">
+        <div className="bg-gray-50 p-6  md:px-40 lg:w-[40%] text-center text-black border-gray-200 border-r-2">
             
             <header className="text-4xl">Tomorrow</header>
             <div className="flex justify-center gap-2 items-center">
@@ -164,7 +164,7 @@ const Home = () => {
       )}
 
       {data.filter(item => (item.date === dayAfterTomorrow && item.hours === '12')).map(item =>
-        <div className="bg-gray-50 p-6 sm:w-[20%] text-center text-black">
+        <div className="bg-gray-50 p-6 lg:w-[20%] md:px-40 text-center text-black">
           <header className="text-4xl">{<SelectDay number={day2} />}</header>
           <div className="flex justify-center gap-2 items-center">
             <p className="text-4xl">{item.value}°C</p>
@@ -201,7 +201,7 @@ const Home = () => {
         </div>
       )}    
    
-      <div className="bg-gray-200 m-10 p-6 sm:w-[20%] text-left text-black">
+      <div className="bg-gray-200 lg:m-10 p-6 lg:w-[20%] md:px-40 text-left text-black">
           <header className="text-md">Today it's...</header>          
         <header className="text-4xl">{<SelectDay number={day} />}</header>
           <div className={`${style}`}>

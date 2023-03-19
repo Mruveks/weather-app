@@ -27,13 +27,13 @@ const News = () => {
 
 
   return (
-    <div className="sm:mx-40 sm:mt-5 text-black">
+    <div className="mx-40 md:mx-10 sm:mx-10 sm:mt-0 mt-5 text-black">
       {data.filter(item => item.author != 'Wykop Sp. Z O.O.').map(item =>
-        <div key={item.id} className="flex justify-start gap-10 sm:px-10 sm:py-5 items-center text-center bg-gray-50 text-black border-b-2 border-gray-200">
+        <div key={item.id} className="flex justify-start gap-10 px-10 py-5 sm:py-0 sm items-center text-center bg-gray-50 text-black border-b-2 border-gray-200">
 
           
-          <div className="flex gap-10">
-            <div className="w-[20%]">
+          <div className="flex gap-10 items-center">
+            <div className="w-60 sm:hidden">
               <img src={item.media} alt="media" className="rounded-xl"/>
             </div>
             <div className="text-left w-[80%]">
@@ -41,7 +41,7 @@ const News = () => {
                 <p className="text-blue-500">{item.topic}</p>
                 <p>{item.author}</p>
               </div>
-              <a href={item.link} className="text-4xl font-bold hover:text-blue-500 hover:cursor-pointer py-2">{item.title}</a>
+              <a href={item.link} className="text-4xl sm:text-lg font-bold hover:text-blue-500 hover:cursor-pointer py-2">{item.title}</a>
               <p className="py-2">{item.excerpt > 10 ? item.excerpt : null}</p>
               <p>{item.published_date}</p>
             </div>

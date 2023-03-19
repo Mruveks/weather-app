@@ -65,8 +65,8 @@ const Forecast = () => {
 
   return (
 
-    <div className="sm:mt-5 text-black sm:px-40 px-10">
-      <header className="grid grid-cols-2 sm:grid-cols-8 h-[20%] py-2 text-4xl">
+    <div className="lg:mt-5 text-black lg:px-40 px-10">
+      <header className="grid grid-cols-2 lg:flex lg:justify-between lg:px-2 h-[20%] py-2 text-4xl">
         <button onClick={() => { handleClickCity(52.23, 21.01); setCity('Warszawa') }} className={`${city === 'Warszawa' ? 'text-orange-400' : ''}`}>Warszawa</button>
         <button onClick={() => { handleClickCity(50.06, 19.94); setCity('Krakow') }} className={`${city === 'Krakow' ? 'text-orange-400' : ''}`}>Kraków</button>
         <button onClick={() => { handleClickCity(54.35, 18.65); setCity('Gdansk') }} className={`${city === 'Gdansk' ? 'text-orange-400' : ''}`}>Gdańsk</button>
@@ -77,60 +77,60 @@ const Forecast = () => {
         <button onClick={() => { handleClickCity(50.26, 19.03); setCity('Katowice') }} className={`${city === 'Katowice' ? 'text-orange-400' : ''}`}>Katowice</button>
       </header>
 
-      <div className="text-center grid grid-rows-2 sm:text-left text-4xl py-2 bg-gray-50 font-bold italic border-y-2 border-gray-200">
+      <div className="grid grid-rows-2 lg:flex justify-center lg:px-2 lg:gap-4 text-4xl py-2 bg-gray-50 font-bold italic border-y-2 border-gray-200">
         <div>{todayString}</div>
         <SelectDay number={day} />
       </div>
 
       {data.filter(item => item.date === todayString).map(item =>
-        <div key={item.hours} className="flex gap-4 sm:gap-8 items-center justify-evenly bg-gray-50 text-black border-b-2 border-gray-200">
+        <div key={item.hours} className="flex gap-4 py-4 lg:gap-8 items-center justify-evenly bg-gray-50 text-black border-b-2 border-gray-200">
 
           <header className="text-4xl">{item.hours}:00</header>
           <WeatherIcon icon={item.weathercode} size={100} time={item.hours}/>
           
-          <div className="sm:w-[10%] w-[30%] text-center text-2xl">
-            <div className="text-4xl">{item.value}°C</div>
-            <div>{<WeatherCode code={item.weathercode} />}</div>
+          <div className="w-[10%] text-center text-2xl">
+            <div className="text-4xl text-orange-600">{item.value}°C</div>
+            <div><WeatherCode code={item.weathercode} /></div>
           </div>
            
-          <div className="sm:grid hidden sm:w-[20%] text-xl">
+          <div className="lg:grid sm:hidden md:hidden sm:w-fit w-72 text-xl">
             <div className={`${style}`}>
               <div className="text-gray-500">Apparent Temp</div>
-              <div>{item.apparent_temperature}°C</div>
+              <div className="text-orange-600">{item.apparent_temperature}°C</div>
             </div>
             <div className={`${style}`}>
               <div className="text-gray-500">Wind</div>
-              <div>{item.wind} km/h</div>
+              <div className="text-orange-600">{item.wind} km/h</div>
             </div>
             <div className={`${style}`}>
               <div className="text-gray-500">Wind Direction</div>
-              <div><WindDirection direction={item.winddirection} /></div>
+              <div className="text-orange-600"><WindDirection direction={item.winddirection} /></div>
             </div>
           </div>
 
-          <div className="sm:grid hidden sm:w-[20%] text-xl">
+          <div className="lg:grid sm:hidden md:hidden w-fit text-xl">
             <div className={`${style}`}>
               <div className="text-gray-500">Snow</div>
-              <div>{item.snow} %</div>
+              <div className="text-orange-600">{item.snow} %</div>
             </div>
             <div className={`${style}`}>
               <div className="text-gray-500">Rain</div>
-              <div>{item.rain} %</div>
+              <div className="text-orange-600">{item.rain} %</div>
             </div>
             <div className={`${style}`}>
               <div className="text-gray-500">Pressure</div>
-              <div>{item.pressure} hPa</div>
+              <div className="text-orange-600">{item.pressure} hPa</div>
             </div>
           </div>
 
-          <div className="sm:grid hidden sm:w-[20%] text-xl">
+          <div className="lg:grid sm:hidden md:hidden w-fit text-xl">
             <div className={`${style}`}>
               <div className="text-gray-500">Clouds</div>
-              <div>{item.cloud} %</div>
+              <div className="text-orange-600">{item.cloud} %</div>
             </div>
             <div className={`${style}`}>
               <div className="text-gray-500">Humidity</div>
-              <div>{item.humidity} %</div>
+              <div className="text-orange-600">{item.humidity} %</div>
             </div>
           </div>
 

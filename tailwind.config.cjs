@@ -5,6 +5,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
+    screens: {
+      'sm': {'max': '767px'},
+      'md': {'min': '768px', 'max': '1365px'},
+      'lg': {'min': '1366px'}
+    },
     extend: {
       backgroundImage: {
         'sun': "url('/src/assets/sunnyclouds.png')",
