@@ -5,9 +5,9 @@ import {AiOutlineTwitter, AiOutlineInstagram, AiOutlineFacebook, AiOutlineYoutub
 const Footer = () => {
   return (
     <footer className="mt-10 bg-blue-500">
-      <div className="flex justify-between py-5 sm:mx-40 items-center text-4xl border-b-2 border-gray-400">
+      <div className="flex justify-between px-10 py-5 sm:mx-40 items-center text-4xl border-b-2 border-gray-400">
         <NavLink to="/">Kuba Mrowiec</NavLink>
-        <div className="flex gap-8 text-2xl">
+        <div className="sm:flex hidden gap-8 text-2xl">
           <AiOutlineInstagram />
           <AiOutlineFacebook />
           <AiOutlineTwitter />
