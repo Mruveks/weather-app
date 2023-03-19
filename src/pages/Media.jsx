@@ -31,44 +31,46 @@ import photo27 from '../assets/photo-27.jpg'
 import photo28 from '../assets/photo-28.jpg'
 import photo29 from '../assets/photo-29.jpg'
 
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 
 const media = () => {
   return (
-    <div className="flex sm:mx-40 gap-10 sm:mt-10">
-      <div className="flex flex-col flex-wrap gap-10">
-        <img src={photo11} alt="cloud" />   
-        <img src={photo12} alt="cloud" />    
-        <img src={photo13} alt="cloud" />       
-        <img src={photo14} alt="cloud" />       
-        <img src={photo15} alt="cloud" />       
-        <img src={photo16} alt="cloud" />       
-        <img src={photo17} alt="cloud" />        
-        <img src={photo18} alt="cloud" />        
-        <img src={photo19} alt="cloud" />     
+    <div className="grid p-4 sm:p-0 sm:flex sm:mx-40 gap-10 sm:mt-10">
+      <div className="flex flex-col flex-wrap gap-10">        
+        <LazyLoadImage src={photo11}   alt="Image Alt" />
+        <LazyLoadImage src={photo12}   alt="Image Alt"/>
+        <LazyLoadImage src={photo13}   alt="Image Alt"/>
+        <LazyLoadImage src={photo14}   alt="Image Alt"/>
+        <LazyLoadImage src={photo15}   alt="Image Alt"/>
+        <LazyLoadImage src={photo16}   alt="Image Alt"/>
+        <LazyLoadImage src={photo17}   alt="Image Alt"/>
+        <LazyLoadImage src={photo18}   alt="Image Alt"/>
+        <LazyLoadImage src={photo19}   alt="Image Alt" />
       </div>
       
       <div className="flex flex-col flex-wrap gap-10">
-        <img src={photo21} alt="cloud" />   
-        <img src={photo22} alt="cloud" />    
-        <img src={photo23} alt="cloud" />       
-        <img src={photo24} alt="cloud" />       
-        <img src={photo25} alt="cloud" />       
-        <img src={photo26} alt="cloud" />       
-        <img src={photo27} alt="cloud" />        
-        <img src={photo8} alt="cloud" />            
+        <LazyLoadImage src={photo21}   alt="Image Alt" />
+        <LazyLoadImage src={photo22}   alt="Image Alt"/>
+        <LazyLoadImage src={photo23}   alt="Image Alt"/>
+        <LazyLoadImage src={photo24}   alt="Image Alt"/>
+        <LazyLoadImage src={photo25}   alt="Image Alt"/>
+        <LazyLoadImage src={photo26}   alt="Image Alt"/>
+        <LazyLoadImage src={photo27}   alt="Image Alt"/>
+        <LazyLoadImage src={photo8}   alt="Image Alt"/>
       </div>
 
       <div className="flex flex-col flex-wrap gap-10">
-        <img src={photo1} alt="cloud" />   
-        <img src={photo10} alt="cloud"/>    
-        <img src={photo3} alt="cloud" />       
-        <img src={photo4} alt="cloud" />       
-        <img src={photo5} alt="cloud" />       
-        <img src={photo6} alt="cloud" />       
-        <img src={photo7} alt="cloud" />        
-        <img src={photo28} alt="cloud" />        
-        <img src={photo9} alt="cloud" />
-        <img src={photo20} alt="cloud" /> 
+        <LazyLoadImage src={photo1}   alt="Image Alt" />
+        <LazyLoadImage src={photo10}   alt="Image Alt"/>
+        <LazyLoadImage src={photo3}   alt="Image Alt"/>
+        <LazyLoadImage src={photo4}   alt="Image Alt"/>
+        <LazyLoadImage src={photo5}   alt="Image Alt"/>
+        <LazyLoadImage src={photo6}   alt="Image Alt"/>
+        <LazyLoadImage src={photo7}   alt="Image Alt"/>
+        <LazyLoadImage src={photo28}   alt="Image Alt"/>
+        <LazyLoadImage src={photo9}   alt="Image Alt" />
+        <LazyLoadImage src={photo20}   alt="Image Alt" />
       </div>
       
     </div>
