@@ -41,7 +41,10 @@ const Navbar = () => {
 				</div>
 			</div>
 			<div className="h-14 flex justify-between bg-orange-400 sm:px-10 px-40 pr-[50%] items-center text-3xl">
-				<NavLink to="/forecast">Forecasts</NavLink>
+        <NavLink to="/forecast">Forecast</NavLink>
+        <NavLink to="/historical">Historical Weather Data</NavLink>
+        <NavLink to="/forecast">Map</NavLink>
+
 			</div>
 		</nav>
 	);
