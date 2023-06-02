@@ -17,7 +17,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/forecast" element={<Forecast />} />
-					<Route ath="/historical" element={<HistoricalWeatherData />} />
+					<Route path="/historical" element={<HistoricalWeatherData />} />
 				</Routes>
 			</div>
 
