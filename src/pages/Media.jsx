@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import photo1 from '../assets/photo-1.jpg'
 import photo2 from '../assets/photo-2.jpg'
 import photo3 from '../assets/photo-3.jpg'
@@ -33,10 +33,22 @@ import photo28 from '../assets/photo-28.jpg'
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const media = () => {
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleLoad = () => {
+    setIsLoaded(true);
+  };
+
   return (
-    <div className="grid sm:flex p-10 sm:p-0  sm:mx-40 gap-10 sm:mt-10">
+    <div className="sm:grid flex p-10 sm:p-0  sm:mx-40 gap-10 sm:mt-10">
       <div className="flex flex-col flex-wrap gap-10">        
-        <LazyLoadImage src={photo11} alt="photo11" />
+      <LazyLoadImage
+          src={photo11}
+          alt="photo11"
+          afterLoad={handleLoad}
+          className={isLoaded ? "opacity-100 transition-opacity duration-500" : "opacity-0"}
+        />
         <LazyLoadImage src={photo12} alt="photo12"/>
         <LazyLoadImage src={photo13} alt="photo13"/>
         <LazyLoadImage src={photo14} alt="photo14"/>

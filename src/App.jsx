@@ -14,7 +14,7 @@ import Footer from './components/Footer'
 function App() {
 
   return (
-    <div className="text-white grid overflow-x-hidden">
+    <div className="text-white grid overflow-x-hidden mt-28">
 
       <Navbar />
       <WeatherCard />

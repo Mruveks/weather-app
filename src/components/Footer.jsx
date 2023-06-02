@@ -15,7 +15,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex justify-between px-10 py-5">
-        <div>2023 Kuba Mrowiec</div>
+        <div>2023@WeatherGraph</div>
         <div>Wszelkie prawa zastrzeżone</div>
       </div>
     </footer>
