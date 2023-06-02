@@ -78,7 +78,7 @@ const Home = () => {
     <div className="flex lg:flex-row flex-col lg:mx-40 lg:mt-5 text-lg ">
       
       {data.filter(item => (item.date === tomorrowString && item.hours === '01')).map(item =>
-        <div className="bg-blue-500 p-6 lg:w-[20%] md:px-40 text-center w-screen">
+        <div className="bg-gray-600 rounded-xl p-6 lg:w-[20%] md:px-40 text-center w-screen">
           
           <header className="text-4xl">Night</header>
           <div className="flex justify-center gap-2 items-center">
@@ -201,7 +201,7 @@ const Home = () => {
         </div>
       )}    
    
-      <div className="bg-gray-200 lg:m-10 p-6 lg:w-[20%] md:px-40 text-left text-black">
+      <div className="bg-gray-200 rounded-xl lg:m-10 p-6 lg:w-[20%] md:px-40 text-left text-black">
           <header className="text-md">Today it's...</header>          
         <header className="text-4xl">{<SelectDay number={day} />}</header>
           <div className={`${style}`}>
