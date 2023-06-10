@@ -27,7 +27,7 @@ const Navbar = () => {
 
 	return (
 		<nav
-			className={`${`bg-blue-500 text-white transition-all duration-300 ${
+			className={`${`bg-blue-500 text-white transition-all z-10 duration-300 ${
 				visible ? "opacity-100" : "opacity-0"
 			} `} w-screen fixed top-0`}
 		>
