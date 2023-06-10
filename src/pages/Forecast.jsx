@@ -68,12 +68,23 @@ const Forecast = () => {
 		"-" +
 		("0" + today.getDate()).slice(-2);
 	var day = today.getDay();
-
+	var todayDate;
+	today.setDate(today.getDate());
+	todayDate =
+		("0" + today.getDate()).slice(-2) +
+		"-" +
+		("0" + (today.getMonth() + 1)).slice(-2) +
+		"-" +
+		today.getFullYear();
 	const style = "flex gap-10 p-2 justify-between border-gray-400 border-b-2";
 
 	return (
 		<div className="lg:mt-5 text-black lg:px-40 px-10">
-			<header className="grid grid-cols-2 lg:flex lg:justify-between lg:px-2 h-[20%] py-2 text-4xl">
+			<div className="grid grid-rows-2 lg:flex justify-center lg:px-2 lg:gap-4 text-4xl py-2 bg-gray-50 font-semibold italic border-y-2 border-gray-200">
+				<div>{todayDate},</div>
+				<SelectDay number={day} />
+			</div>
+			<header className="grid grid-cols-2 lg:flex lg:justify-between h-[20%] py-2 text-4xl">
 				<button
 					onClick={() => {
 						handleClickCity(52.23, 21.01);
@@ -147,12 +158,6 @@ const Forecast = () => {
 					Katowice
 				</button>
 			</header>
-
-			<div className="grid grid-rows-2 lg:flex justify-center lg:px-2 lg:gap-4 text-4xl py-2 bg-gray-50 font-bold italic border-y-2 border-gray-200">
-				<div>{todayString}</div>
-				<SelectDay number={day} />
-			</div>
-
 			{data
 				.filter((item) => item.date === todayString)
 				.map((item, index) => (
