@@ -100,7 +100,7 @@ const Home = () => {
 				{data
 					.filter((item) => item.date === tomorrowString && item.hours === "01")
 					.map((item) => (
-						<div className="bg-gray-600 rounded-xl p-6 lg:w-[20%] md:px-40 text-center w-screen">
+						<div className="bg-gray-600 sm:rounded-xl p-6 lg:w-[20%] md:px-40 text-center w-screen">
 							<header className="text-4xl">Night</header>
 							<div className="flex justify-center gap-2 items-center">
 								<p className="text-4xl">{item.value}°C</p>

@@ -79,11 +79,11 @@ const WeatherCard = () => {
 									key={item.id}
 									className="flex flex-col lg:flex-row gap-2 items-center py-20"
 								>
-									<div className="grid-cols-2 items-center grid sm:text-center text-left lg:w-[50%] my-10 lg:my-2 border-gray-400 lg:border-r-2">
+									<div className="grid-cols-1 sm:grid-cols-2 items-center grid text-center lg:w-[50%] my-10 lg:my-2 border-gray-400 lg:border-r-2">
 										<span>
 											<header className="text-6xl">Warszawa</header>
-											<div className="gap-2 text-2xl flex">
-												<div className="">{<SelectDay number={day} />}</div>
+											<div className="gap-2 text-2xl sm:flex justify-center">
+												<SelectDay number={day} />
 												<div className="sm:text-xl sm:m-1">
 													{item.date}, {item.hours}:00
 												</div>
