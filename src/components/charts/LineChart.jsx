@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import {
 	ResponsiveContainer,
 	XAxis,
@@ -12,6 +12,8 @@ import {
 import moment from "moment";
 
 const LineChart = ({ data, dataKey }) => {
+	const [isSmallScreen, setIsSmallScreen] = useState(false);
+
 	const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
 			const { value, time } = payload[0].payload;
@@ -28,6 +30,21 @@ const LineChart = ({ data, dataKey }) => {
 		return null;
 	};
 
+	useEffect(() => {
+		const mediaQuery = window.matchMedia("(max-width: 1100px)");
+
+		const handleMediaQueryChange = (e) => {
+			setIsSmallScreen(e.matches);
+		};
+
+		handleMediaQueryChange(mediaQuery);
+		mediaQuery.addListener(handleMediaQueryChange);
+
+		return () => {
+			mediaQuery.removeListener(handleMediaQueryChange);
+		};
+	}, []);
+
 	return data && data.length > 0 ? (
 		<ResponsiveContainer height={500}>
 			<AreaChart data={data}>
@@ -36,7 +53,7 @@ const LineChart = ({ data, dataKey }) => {
 					dataKey="time"
 					axisLine={false}
 					tickLine={false}
-					interval={365}
+					interval={isSmallScreen ? 650 : 365}
 					stroke="#555555"
 					tickSize={5}
 					tick={{

@@ -73,7 +73,7 @@ const HistoricalWeatherData = () => {
 	}, []);
 
 	return (
-		<div className="w-screen px-40">
+		<div className="w-screen px-10 sm:px-40">
 			<header className="text-4xl italic text-black  mt-10">Temperature</header>
 			<div className="">
 				{data ? <LineChart data={data} dataKey="temperature_2m" /> : null}
