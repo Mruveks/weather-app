@@ -4,6 +4,7 @@ import "./App.css";
 
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
+import MobileNavbar from "./components/MoblieNavbar";
 import Forecast from "./pages/Forecast";
 import Footer from "./components/Footer";
 import HistoricalWeatherData from "./pages/HistoricalWeatherData";
@@ -12,7 +13,7 @@ function App() {
 	return (
 		<div className="text-white grid overflow-x-hidden mt-28">
 			<Navbar />
-
+      <MobileNavbar />
 			<div>
 				<Routes>
 					<Route path="/" element={<Home />} />
