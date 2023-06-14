@@ -22,7 +22,7 @@ const MobileNavbar = () => {
 
 	return (
 		<nav
-			className="bg-blue-500 text-white transition-all overflow-y-hidden duration-300 opacity-100
+			className="text-white transition-all z-10 overflow-y-hidden duration-300 opacity-100
 			w-screen fixed top-0 sm:block hidden"
 		>
 			<div className="h-28 bg-gray-50 flex justify-between items-center px-10  text-4xl text-black">

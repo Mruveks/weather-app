@@ -29,7 +29,7 @@ const LineChart = ({ data, dataKey }) => {
 	};
 
 	return data && data.length > 0 ? (
-		<ResponsiveContainer className="sm:hidden" height={500}>
+		<ResponsiveContainer height={500}>
 			<AreaChart data={data}>
 				<CartesianGrid strokeDasharray="3 3" vertical={true} />
 				<XAxis
