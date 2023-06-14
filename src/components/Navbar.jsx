@@ -31,9 +31,9 @@ const Navbar = () => {
 				visible ? "opacity-100" : "opacity-0"
 			} `} w-screen fixed top-0`}
 		>
-			<div className="h-14 bg-gray-50 flex justify-between items-center px-10  text-4xl text-black">
+			<div className="h-14 bg-gray-50 flex justify-between items-center lg:px-40 px-10 text-4xl text-black">
 				<NavLink to="/">
-					<img src={WeatherGraph} alt="logo"/>
+					<img src={WeatherGraph} alt="logo" />
 				</NavLink>{" "}
 				<div className="flex sm:hidden gap-8 text-2xl">
 					<AiOutlineInstagram className="cursor-pointer" />
@@ -42,10 +42,16 @@ const Navbar = () => {
 					<AiOutlineYoutube className="cursor-pointer" />
 				</div>
 			</div>
-			<div className="h-14 flex justify-between bg-orange-400 px-10 items-center text-4xl">
-				<NavLink to="/forecast" className="hover-underline-animation">Forecast</NavLink>
-				<NavLink to="/historical" className="hover-underline-animation">Historical Data</NavLink>
-				<NavLink to="/forecast" className="hover-underline-animation">Map</NavLink>
+			<div className="h-14 flex justify-between bg-orange-400 lg:px-40 px-10  items-center text-4xl">
+				<NavLink to="/forecast" className="hover-underline-animation">
+					Forecast
+				</NavLink>
+				<NavLink to="/historical" className="hover-underline-animation">
+					Historical Data
+				</NavLink>
+				<NavLink to="/forecast" className="hover-underline-animation">
+					Map
+				</NavLink>
 			</div>
 		</nav>
 	);

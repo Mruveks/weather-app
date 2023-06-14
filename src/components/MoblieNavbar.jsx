@@ -33,7 +33,8 @@ const MobileNavbar = () => {
 					<AiOutlineMenu
 						onClick={() => {
 							openNav();
-						}}
+            }}
+            size={25}
 						className={`box ${isRotated ? "rotate" : ""} ${
 							isOpen ? "" : "rotate-back"
 						} cursor-pointer transition duration-300`}
